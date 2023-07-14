@@ -11,7 +11,7 @@ bot = commands.Bot(command_prefix='/', intents=intents)
 async def on_ready():
     print('Ready')
 
-hello_words =['привет','hi','здравствуй','прив','ку']
+hello_words =['/hi']
 
 
 @bot.event
@@ -22,21 +22,30 @@ async def on_message(message):
     msg = message.content.lower()
 
     if msg in hello_words:
-        await message.channel.send('hello')
+        await message.channel.send('hello :DDD')
 
-    if message.content.startswith('where to throw batteries'):
+    if message.content.startswith('/where to throw batteries'):
         await message.channel.send('''Put a Plastic Box Near Your Home Or Place Where You Live So Ppl 
 Can Throw Batteries There And After That Take That 
 Batteries And Take It to The Battery Center For Them To Be Recycled''')
 
-    elif message.content.startswith('where to throw plastick'):
+    elif message.content.startswith('/where to throw plastick'):
         await message.channel.send('''Throw Plastick In The Yellow Or Orange Containers''')
 
-    elif message.content.startswith('where to throw metal cans'):
+    elif message.content.startswith('/where to throw metal cans'):
         await message.channel.send('''Throw Them In The Recycling Bin.''')
 
-    elif message.content.startswith('can you recycle organics'):
+    elif message.content.startswith('/can you recycle organics'):
         await message.channel.send('''organics are readily recyclable into soil 
 amendments like compost, mulch, and liquid 
 fertilizers, as well as biofuel, a renewable 
 natural gas..''')
+    elif message.content.startswith('/help'):
+        await message.channel.send('''So the bot is going to help the 
+nature by teling ppl where to 
+throw the trash that is needed to be recycled 
+All of the commands are:
+/can you recycle organics, 
+/where to throw metal cans, 
+/where to throw plastick, 
+/where to throw batteries''')
