@@ -1,0 +1,42 @@
+import discord
+from discord.ext import commands
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='/', intents=intents)
+
+
+@bot.event
+async def on_ready():
+    print('Ready')
+
+hello_words =['привет','hi','здравствуй','прив','ку']
+
+
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    msg = message.content.lower()
+
+    if msg in hello_words:
+        await message.channel.send('hello')
+
+    if message.content.startswith('where to throw batteries'):
+        await message.channel.send('''Put a Plastic Box Near Your Home Or Place Where You Live So Ppl 
+Can Throw Batteries There And After That Take That 
+Batteries And Take It to The Battery Center For Them To Be Recycled''')
+
+    elif message.content.startswith('where to throw plastick'):
+        await message.channel.send('''Throw Plastick In The Yellow Or Orange Containers''')
+
+    elif message.content.startswith('where to throw metal cans'):
+        await message.channel.send('''Throw Them In The Recycling Bin.''')
+
+    elif message.content.startswith('can you recycle organics'):
+        await message.channel.send('''organics are readily recyclable into soil 
+amendments like compost, mulch, and liquid 
+fertilizers, as well as biofuel, a renewable 
+natural gas..''')
